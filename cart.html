@@ -2,13 +2,119 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>購物車</title>
-  <link rel="stylesheet" href="style.css" />
   <style>
+    /* Reset & base */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #e0e0e0;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(15, 32, 39, 0.85);
+      border-bottom: 2px solid #0ff;
+      box-shadow: 0 0 20px #0ff;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #0ff;
+      text-shadow:
+        0 0 8px #0ff,
+        0 0 15px #0ff,
+        0 0 25px #0ff;
+    }
+
+    .nav-links a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: #a0f0ff;
+      font-weight: 600;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #0ff;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #0ff;
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem 2rem;
+      text-align: center;
+      background: radial-gradient(circle at center, #0ff 15%, transparent 70%);
+      animation: pulseGlow 4s ease-in-out infinite;
+      border-radius: 12px;
+      margin: 2rem;
+      box-shadow:
+        0 0 20px #0ff,
+        inset 0 0 30px #0ff;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-shadow:
+        0 0 10px #0ff,
+        0 0 25px #0ff,
+        0 0 40px #0ff;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: #b2faff;
+      text-shadow: 0 0 10px #0ff;
+    }
+
+    /* Cart Section */
     .cart {
+      max-width: 700px;
+      margin: 2rem auto 4rem auto;
+      background: rgba(15, 32, 39, 0.85);
       padding: 2rem;
-      background-color: #181a1f;
+      border-radius: 16px;
+      box-shadow:
+        0 0 25px #0ff,
+        inset 0 0 20px #0ff;
     }
 
     .cart-item {
@@ -16,17 +122,70 @@
       justify-content: space-between;
       border-bottom: 1px solid #2a2d33;
       padding: 1rem 0;
+      color: #b2faff;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    .cart-item:last-child {
+      border-bottom: none;
     }
 
     .cart-item p {
-      color: #ccc;
+      margin: 0;
     }
 
     .total {
       text-align: right;
-      margin-top: 1rem;
-      color: #fff;
-      font-weight: bold;
+      margin-top: 1.5rem;
+      color: #0ff;
+      font-weight: 900;
+      font-size: 1.3rem;
+      text-shadow:
+        0 0 10px #0ff,
+        0 0 20px #0ff;
+    }
+
+    /* Footer */
+    footer {
+      padding: 1rem 2rem;
+      background: rgba(15, 32, 39, 0.9);
+      text-align: center;
+      font-size: 0.9rem;
+      color: #0ff;
+      border-top: 2px solid #0ff;
+      text-shadow: 0 0 10px #0ff;
+      margin-top: auto;
+    }
+
+    /* 動態脈衝光影動畫 */
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow:
+          0 0 20px #0ff,
+          inset 0 0 30px #0ff;
+      }
+      50% {
+        box-shadow:
+          0 0 40px #0ff,
+          inset 0 0 50px #0ff;
+      }
+    }
+
+    /* RWD */
+    @media (max-width: 768px) {
+      .cart {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
