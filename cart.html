@@ -3,223 +3,191 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>購物車</title>
+  <title>購物車 - 誠亦科技</title>
   <style>
-    /* Reset & base */
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #e0e0e0;
-    }
-
     body {
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      background: #0f2027;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
     }
 
-    /* Header */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    header, footer {
+      background: rgba(15, 32, 39, 0.9);
       padding: 1rem 2rem;
-      background: rgba(15, 32, 39, 0.85);
+      text-align: center;
       border-bottom: 2px solid #0ff;
-      box-shadow: 0 0 20px #0ff;
+      box-shadow: 0 0 15px #0ff;
     }
 
     .logo {
-      font-size: 1.8rem;
-      font-weight: 900;
+      font-size: 1.5rem;
+      font-weight: bold;
       color: #0ff;
-      text-shadow:
-        0 0 8px #0ff,
-        0 0 15px #0ff,
-        0 0 25px #0ff;
-    }
-
-    .nav-links a {
-      margin-left: 1.5rem;
-      text-decoration: none;
-      color: #a0f0ff;
-      font-weight: 600;
-      position: relative;
-      transition: color 0.3s ease;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: #0ff;
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      color: #0ff;
-    }
-
-    .nav-links a:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-
-    /* Hero */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 4rem 2rem;
-      text-align: center;
-      background: radial-gradient(circle at center, #0ff 15%, transparent 70%);
-      animation: pulseGlow 4s ease-in-out infinite;
-      border-radius: 12px;
-      margin: 2rem;
-      box-shadow:
-        0 0 20px #0ff,
-        inset 0 0 30px #0ff;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 900;
-      letter-spacing: 0.15em;
-      text-shadow:
-        0 0 10px #0ff,
-        0 0 25px #0ff,
-        0 0 40px #0ff;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.3rem;
-      color: #b2faff;
       text-shadow: 0 0 10px #0ff;
     }
 
-    /* Cart Section */
-    .cart {
-      max-width: 700px;
-      margin: 2rem auto 4rem auto;
-      background: rgba(15, 32, 39, 0.85);
+    .cart-container {
       padding: 2rem;
-      border-radius: 16px;
-      box-shadow:
-        0 0 25px #0ff,
-        inset 0 0 20px #0ff;
+      max-width: 800px;
+      margin: auto;
     }
 
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid #2a2d33;
-      padding: 1rem 0;
-      color: #b2faff;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: color 0.3s ease;
+    h1 {
+      text-align: center;
+      color: #0ff;
+      margin-bottom: 1.5rem;
     }
 
-    .cart-item:last-child {
-      border-bottom: none;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(32, 55, 72, 0.8);
+      box-shadow: 0 0 10px #0ff;
+      border-radius: 10px;
+      overflow: hidden;
     }
 
-    .cart-item p {
-      margin: 0;
+    th, td {
+      padding: 1rem;
+      border-bottom: 1px solid #0ff;
+      text-align: center;
+    }
+
+    th {
+      background: rgba(0, 255, 255, 0.2);
+      color: #0ff;
+    }
+
+    button {
+      padding: 0.4rem 1rem;
+      background: transparent;
+      border: 2px solid #0ff;
+      color: #0ff;
+      cursor: pointer;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #0ff;
+      color: #001f2d;
+      box-shadow: 0 0 10px #0ff;
     }
 
     .total {
       text-align: right;
-      margin-top: 1.5rem;
-      color: #0ff;
-      font-weight: 900;
-      font-size: 1.3rem;
-      text-shadow:
-        0 0 10px #0ff,
-        0 0 20px #0ff;
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #b2faff;
     }
 
-    /* Footer */
-    footer {
-      padding: 1rem 2rem;
-      background: rgba(15, 32, 39, 0.9);
+    .checkout {
       text-align: center;
-      font-size: 0.9rem;
-      color: #0ff;
-      border-top: 2px solid #0ff;
-      text-shadow: 0 0 10px #0ff;
-      margin-top: auto;
+      margin-top: 2rem;
     }
 
-    /* 動態脈衝光影動畫 */
-    @keyframes pulseGlow {
-      0%, 100% {
-        box-shadow:
-          0 0 20px #0ff,
-          inset 0 0 30px #0ff;
-      }
-      50% {
-        box-shadow:
-          0 0 40px #0ff,
-          inset 0 0 50px #0ff;
-      }
-    }
-
-    /* RWD */
-    @media (max-width: 768px) {
-      .cart {
-        margin: 1rem;
-        padding: 1.5rem;
-      }
-
-      .hero h1 {
-        font-size: 2rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
+    .empty {
+      text-align: center;
+      color: #aaa;
+      font-size: 1.1rem;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">ChenEE.</div>
-    <nav class="nav-links">
-      <a href="index.html">首頁</a>
-      <a href="about.html">關於我們</a>
-      <a href="cart.html">購物車</a>
-    </nav>
+    <div class="logo">TechRetail 購物車</div>
   </header>
 
-  <section class="hero">
-    <h1>我的購物車</h1>
-    <p>查看您的商品與結帳金額</p>
-  </section>
-
-  <section class="cart">
-    <div class="cart-item">
-      <p>無線鍵盤</p>
-      <p>$890</p>
-    </div>
-    <div class="cart-item">
-      <p>智慧拖把</p>
-      <p>$390</p>
-    </div>
-    <div class="total">
-      總金額：$1,280
-    </div>
-  </section>
+  <div class="cart-container">
+    <h1>您的購物車</h1>
+    <div id="cart-area"></div>
+    <div class="total" id="total"></div>
+    <div class="checkout" id="checkout"></div>
+  </div>
 
   <footer>
-    &copy; 2025 誠亦科技有限公司.
+    &copy; 2025 誠亦科技有限公司
   </footer>
+
+  <script>
+    const cartArea = document.getElementById("cart-area");
+    const totalArea = document.getElementById("total");
+    const checkoutArea = document.getElementById("checkout");
+
+    const productMap = {
+      1: { name: "無線鍵盤", price: 800 },
+      2: { name: "螢幕", price: 1200 },
+      3: { name: "掃地機器人", price: 1500 }
+    };
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function renderCart() {
+      if (cart.length === 0) {
+        cartArea.innerHTML = "<p class='empty'>購物車目前是空的。</p>";
+        totalArea.innerHTML = "";
+        checkoutArea.innerHTML = "";
+        return;
+      }
+
+      let html = `
+        <table>
+          <thead>
+            <tr>
+              <th>商品名稱</th>
+              <th>單價</th>
+              <th>數量</th>
+              <th>小計</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      let total = 0;
+
+      cart.forEach(item => {
+        const product = productMap[item.id];
+        const subtotal = product.price * item.qty;
+        total += subtotal;
+
+        html += `
+          <tr>
+            <td>${product.name}</td>
+            <td>$${product.price}</td>
+            <td>${item.qty}</td>
+            <td>$${subtotal}</td>
+            <td><button class="btn-remove" data-id="${item.id}">刪除</button></td>
+          </tr>
+        `;
+      });
+
+      html += "</tbody></table>";
+      cartArea.innerHTML = html;
+      totalArea.innerHTML = `總金額：$${total}`;
+      checkoutArea.innerHTML = `<button onclick="checkout()">前往結帳</button>`;
+    }
+
+    cartArea.addEventListener("click", (e) => {
+      if (!e.target.classList.contains("btn-remove")) return;
+
+      const id = parseInt(e.target.dataset.id);
+      cart = cart.filter(item => item.id !== id);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    });
+
+    function checkout() {
+      alert("感謝您的訂購！");
+      cart = [];
+      localStorage.removeItem("cart");
+      renderCart();
+    }
+
+    renderCart();
+  </script>
 </body>
 </html>
