@@ -2,15 +2,207 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ChenEE 首頁</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>誠亦科技 首頁</title>
+   <style>
+    /* Reset & base */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #e0e0e0;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(15, 32, 39, 0.85);
+      border-bottom: 2px solid #0ff;
+      box-shadow: 0 0 20px #0ff;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #0ff;
+      text-shadow:
+        0 0 8px #0ff,
+        0 0 15px #0ff,
+        0 0 25px #0ff;
+    }
+
+    .nav-links a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: #a0f0ff;
+      font-weight: 600;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #0ff;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #0ff;
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem 2rem;
+      text-align: center;
+      background: radial-gradient(circle at center, #0ff 15%, transparent 70%);
+      animation: pulseGlow 4s ease-in-out infinite;
+      border-radius: 12px;
+      margin: 2rem;
+      box-shadow:
+        0 0 20px #0ff,
+        inset 0 0 30px #0ff;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-shadow:
+        0 0 10px #0ff,
+        0 0 25px #0ff,
+        0 0 40px #0ff;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: #b2faff;
+      text-shadow: 0 0 10px #0ff;
+    }
+
+    /* Services Section */
+    .services {
+      max-width: 900px;
+      margin: 2rem auto 4rem auto;
+      display: flex;
+      gap: 2rem;
+      padding: 0 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .service-card {
+      background: rgba(15, 32, 39, 0.85);
+      flex: 1 1 250px;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow:
+        0 0 25px #0ff,
+        inset 0 0 20px #0ff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow:
+        0 0 40px #0ff,
+        inset 0 0 30px #0ff;
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #0ff;
+      text-shadow:
+        0 0 8px #0ff,
+        0 0 20px #0ff;
+    }
+
+    .service-card p {
+      font-size: 1rem;
+      color: #b2faff;
+      line-height: 1.5;
+      text-shadow: 0 0 6px #0ff;
+    }
+
+    /* Footer */
+    footer {
+      padding: 1rem 2rem;
+      background: rgba(15, 32, 39, 0.9);
+      text-align: center;
+      font-size: 0.9rem;
+      color: #0ff;
+      border-top: 2px solid #0ff;
+      text-shadow: 0 0 10px #0ff;
+      margin-top: auto;
+    }
+
+    /* 動態脈衝光影動畫 */
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow:
+          0 0 20px #0ff,
+          inset 0 0 30px #0ff;
+      }
+      50% {
+        box-shadow:
+          0 0 40px #0ff,
+          inset 0 0 50px #0ff;
+      }
+    }
+
+    /* RWD */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .services {
+        flex-direction: column;
+        align-items: center;
+      }
+      .service-card {
+        flex: unset;
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
     <div class="logo">TechRetail</div>
     <nav class="nav-links">
       <a href="index.html">首頁</a>
+      <a href="about.html">關於我們</a>
       <a href="cart.html">購物車</a>
     </nav>
   </header>
@@ -20,50 +212,50 @@
     <p>選購電腦、生活用品與智慧商品</p>
   </section>
 
-  <section class="products" id="product-list">
-    <!-- 商品將由 JS 載入 -->
+  <section class="products" id="product-wrapper">
+    <div class="product-card">
+      <img src="./images/pexels-joshsorenson-1714205.jpg" alt="鍵盤" />
+      <h4>無線鍵盤</h4>
+      <p>人體工學設計，舒適打字體驗</p>
+      <button class="btn-add-cart" data-id="1">加入購物車</button>
+    </div>
+    <div class="product-card">
+      <img src="./images/exels-lee-campbell-18167-115655.jpg" alt="螢幕" />
+      <h4>螢幕</h4>
+      <p>高清畫質，長效電力</p>
+      <button class="btn-add-cart" data-id="2">加入購物車</button>
+    </div>
+    <div class="product-card">
+      <img src="./images/pexels-atomlaborblog-844874.jpg" alt="掃地機器人" />
+      <h4>掃地機器人</h4>
+      <p>快速清潔，省水省力</p>
+      <button class="btn-add-cart" data-id="3">加入購物車</button>
+    </div>
   </section>
 
+  <footer>
+    &copy; 2025 誠亦科技有限公司 | 00200469 
+  </footer>
+
   <script>
-    const products = [
-      { id: 1, name: "無線鍵盤", price: 890, desc: "人體工學設計", img: ./images/pexels-joshsorenson-1714205.jpg" alt="鍵盤" },
-      { id: 2, name: "藍牙耳機", price: 1290, desc: "高清音質", img: "./images/exels-lee-campbell-18167-115655.jpg" alt="螢幕" },
-      { id: 3, name: "掃地機器人", price: 390, desc: "快速清潔", img: "./images/pexels-atomlaborblog-844874.jpg" alt="掃地機器人"  }
-    ];
-
+    const productWrapper = document.getElementById("product-wrapper");
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    const productWrapper = document.getElementById("product-list");
-
-    function renderProducts() {
-      productWrapper.innerHTML = "";
-      products.forEach((p) => {
-        productWrapper.innerHTML += `
-          <div class="product-card">
-            <img src="${p.img}" alt="${p.name}">
-            <h4>${p.name}</h4>
-            <p>${p.desc}</p>
-            <p>$${p.price}</p>
-            <button class="btn-add-cart" data-id="${p.id}">加入購物車</button>
-          </div>
-        `;
-      });
-    }
 
     productWrapper.addEventListener("click", (e) => {
       if (!e.target.classList.contains("btn-add-cart")) return;
+
       const id = parseInt(e.target.dataset.id);
-      const index = cart.findIndex(item => item.id === id);
+      const index = cart.findIndex((item) => item.id === id);
+
       if (index === -1) {
         cart.push({ id, qty: 1 });
       } else {
         cart[index].qty++;
       }
+
       localStorage.setItem("cart", JSON.stringify(cart));
       alert("已加入購物車！");
     });
-
-    renderProducts();
   </script>
 </body>
 </html>
